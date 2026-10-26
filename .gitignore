@@ -1,0 +1,10 @@
+frontend/node_modules/
+frontend/dist/
+backend/writable/cache/*
+backend/writable/logs/*
+backend/writable/session/*
+backend/writable/debugbar/*
+!backend/writable/**/index.html
+
+backend/env
+.~lock.*#
