@@ -241,3 +241,61 @@ button:focus-visible, input:focus-visible, select:focus-visible, tr:focus-visibl
   .entete, .contenu { padding-left: 1rem; padding-right: 1rem; }
   .onglets { overflow-x: auto; }
 }
+
+/* 11. Niveau 1 : nouveautés ---------------------------------- */
+
+/* Badges (ex. « Épuisé ») */
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.badge-epuise { background: var(--piment); color: var(--craie); }
+
+/* Plat épuisé dans l’ardoise : grisé, nom barré */
+.plat-epuise { opacity: 0.5; }
+.plat-epuise .plat-nom { text-decoration: line-through; }
+
+/* Description sous le nom du plat, sur sa propre ligne */
+.plat-description {
+  flex-basis: 100%;
+  font-size: 0.85rem;
+  opacity: 0.75;
+}
+
+/* Bannière du plat du jour */
+.bandeau-plat-du-jour {
+  margin-bottom: var(--espace);
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--moutarde);
+  border-left: 8px solid var(--moutarde);
+  border-radius: var(--rayon);
+  background: var(--papier);
+  color: var(--encre);
+}
+.bandeau-titre {
+  margin: 0 0 0.25rem;
+  font-family: var(--police-titre);
+  font-size: 1.1rem;
+  color: var(--ardoise);
+}
+.bandeau-contenu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 1rem;
+}
+.bandeau-contenu small { flex-basis: 100%; color: var(--gris); }
+.bandeau-choix { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+.bandeau-choix select {
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--trait);
+  border-radius: var(--rayon);
+  font: inherit;
+  background: var(--papier);
+}
+.bandeau-plat-du-jour .lien { color: var(--ardoise); }
+.historique { margin: 0.5rem 0 0; padding-left: 1.25rem; font-size: 0.9rem; }
