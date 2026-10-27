@@ -8,7 +8,7 @@ const props = defineProps({
 })
 const emit = defineEmits(['enregistre', 'annule'])
 
-const formulaireVide = () => ({ nom: '', prix: '', id_categorie: '' })
+const formulaireVide = () => ({ nom: '', prix: '', id_categorie: '', description: '', disponible: true })
 
 const form = ref(formulaireVide())
 const erreurs = ref({})
@@ -22,7 +22,13 @@ watch(
   () => props.plat,
   (plat) => {
     form.value = plat
-      ? { nom: plat.nom, prix: plat.prix, id_categorie: plat.id_categorie }
+      ? {
+          nom: plat.nom,
+          prix: plat.prix,
+          id_categorie: plat.id_categorie,
+          description: plat.description ?? '',
+          disponible: plat.disponible,
+        }
       : formulaireVide()
     erreurs.value = {}
     message.value = ''
@@ -69,6 +75,18 @@ async function enregistrer() {
       <span>Prix (Ar)</span>
       <input v-model.number="form.prix" type="number" placeholder="Ex. : 500" />
       <small v-if="erreurs.prix" class="erreur">{{ erreurs.prix }}</small>
+    </label>
+
+    <label class="champ">
+      <span>Description</span>
+      <textarea v-model.trim="form.description" rows="3" placeholder="Ex. : Riz, viande de zébu et brèdes"></textarea>
+      <small v-if="erreurs.description" class="erreur">{{ erreurs.description }}</small>
+    </label>
+
+    <label class="champ">
+      <input v-model="form.disponible" type="checkbox" />
+      <span>Disponible</span>
+      <small v-if="erreurs.disponible" class="erreur">{{ erreurs.disponible }}</small>
     </label>
 
     <label class="champ">
