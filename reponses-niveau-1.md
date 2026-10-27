@@ -20,3 +20,17 @@ ERROR:  duplicate key value violates unique constraint "uq_plat_nom"
 DETAIL:  Key (nom)=(Romazava) already exists.
 
 
+1.3 Le modèle PlatModel
+
+{
+    "id": 1,
+    "nom": "Vary amin'anana",
+    "prix": 2000,
+    "id_categorie": 1,
+    "description": null,
+    "disponible": true
+}
+
+
+
+

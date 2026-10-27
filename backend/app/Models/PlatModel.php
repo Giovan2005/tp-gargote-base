@@ -48,17 +48,24 @@ class PlatModel extends Model
      * Liste des plats avec le libellé de leur catégorie.
      * Si $idCategorie est fourni, ne garde que cette catégorie.
      */
-    public function listerAvecCategorie(?int $idCategorie = null): array
+    public function listerAvecCategorie(?int $idCategorie = null, ?bool $disponible = null): array
     {
-        $this->select('plat.*, categorie.libelle AS categorie')
-            ->join('categorie', 'categorie.id = plat.id_categorie')
-            ->orderBy('categorie.libelle')
-            ->orderBy('plat.nom');
+    $this->select('plat.*, categorie.libelle AS categorie')
+        ->join('categorie', 'categorie.id = plat.id_categorie')
+        ->orderBy('categorie.libelle')
+        ->orderBy('plat.nom');
 
-        if ($idCategorie !== null) {
-            $this->where('plat.id_categorie', $idCategorie);
-        }
+    if ($idCategorie !== null) {
+        $this->where('plat.id_categorie', $idCategorie);
+    }
 
-        return $this->findAll();
+    if ($disponible !== null) {
+        $this->where('plat.disponible', $disponible);
+    }
+
+    return $this->findAll();
     }
 }
+
+
+

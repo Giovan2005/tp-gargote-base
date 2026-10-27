@@ -19,11 +19,13 @@ class Plats extends ApiController
      */
     public function index()
     {
-        $idCategorie = $this->request->getGet('categorie');
+    $idCategorie = $this->request->getGet('categorie');
+    $disponible  = $this->request->getGet('disponible');
 
-        return $this->respond($this->plats->listerAvecCategorie(
-            $idCategorie !== null ? (int) $idCategorie : null
-        ));
+    return $this->respond($this->plats->listerAvecCategorie(
+        $idCategorie !== null ? (int) $idCategorie : null,
+        $disponible !== null ? filter_var($disponible, FILTER_VALIDATE_BOOLEAN) : null
+    ));
     }
 
     /** GET /api/plats/{id} */
