@@ -3,6 +3,7 @@ import { computed, onMounted, ref } from 'vue'
 import { api, ApiError } from '../api'
 import { ariary, parCategorie } from '../utils/format'
 import Panier from '../components/Panier.vue'
+import PlatDuJour from '../components/PlatDuJour.vue'
 
 const plats = ref([])
 const panier = ref([]) // [ { plat, quantite } ]
@@ -49,7 +50,8 @@ async function envoyer() {
 
 <template>
   <p v-if="message" class="alerte" :class="`alerte-${message.type}`">{{ message.texte }}</p>
-
+  <PlatDuJour :modifiable="false" @choisir="ajouter" />
+  
   <div class="grille">
     <div class="ardoise">
       <section v-for="(liste, categorie) in groupes" :key="categorie" class="ardoise-groupe">

@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue'
 import { api } from '../api'
 import PlatList from '../components/PlatList.vue'
 import PlatForm from '../components/PlatForm.vue'
+import PlatDuJour from '../components/PlatDuJour.vue'
 
 const plats = ref([])
 const categories = ref([])
@@ -61,6 +62,8 @@ onMounted(charger)
 
 <template>
   <p v-if="message" class="alerte" :class="`alerte-${message.type}`">{{ message.texte }}</p>
+
+  <PlatDuJour :modifiable="true" :plats="plats" />
 
   <div class="grille">
     <PlatList
