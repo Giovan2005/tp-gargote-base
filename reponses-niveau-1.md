@@ -31,6 +31,8 @@ DETAIL:  Key (nom)=(Romazava) already exists.
     "disponible": true
 }
 
+1.5
 
-
+4  R2 renvoie 409 et non 422, car la requête est bien écrite et le plat existe
+5  Je propose que le plat reste plat du jour mais que l’interface affiche « Épuisé » à côté Bao peut ainsi choisir un autre plat
 
